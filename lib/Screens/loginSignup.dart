@@ -14,199 +14,202 @@ class _LoginSignupState extends State<LoginSignup> {
   @override
   Widget build(BuildContext context) {
     Size s = MediaQuery.of(context).size;
-    return Scaffold(
-      backgroundColor: MainColors.backgroundColor,
-      body: Stack(
-        children: [
-          AnimatedPositioned(
-            duration: Duration(milliseconds: 700),
-            curve: Curves.bounceOut,
-            top: 0,
-            right: 0,
-            left: 0,
-            child: Container(
-              height: s.height * .4,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/images/ciftci.jpg"),
-                    fit: BoxFit.fill),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: MainColors.backgroundColor,
+        body: Stack(
+          children: [
+            AnimatedPositioned(
+              duration: Duration(milliseconds: 700),
+              curve: Curves.bounceOut,
+              top: 0,
+              right: 0,
+              left: 0,
+              child: Container(
+                height: s.height * .35,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/ciftci.jpg"),
+                      fit: BoxFit.fill),
+                ),
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 700),
+                  curve: Curves.bounceOut,
+                  padding:
+                      EdgeInsets.only(top: s.height * .10, left: s.width * .05),
+                  color: Color(0xFF3b5999).withOpacity(.55),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Organik Store'a",
+                        style: TextStyle(
+                          color: Colors.yellow[700],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
+                      ),
+                      Text(
+                        "hoş geldiniz...",
+                        style: TextStyle(
+                          color: Colors.yellow[700],
+                          fontWeight: FontWeight.w300,
+                          fontSize: 25,
+                        ),
+                      ),
+                      SizedBox(
+                        height: s.height * .012,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Devam etmek için",
+                            style: TextStyle(
+                              color: Colors.white60,
+                              letterSpacing: 1,
+                            ),
+                          ),
+                          Text(
+                            isSignupScreen
+                                ? " kayıt olunuz."
+                                : " giriş yapınız",
+                            style: TextStyle(
+                              color: Colors.white60,
+                              letterSpacing: 1,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
               ),
+            ),
+            buildButtonContainerPositioned(true),
+            AnimatedPositioned(
+              duration: Duration(milliseconds: 700),
+              curve: Curves.bounceOut,
+              top: s.height * .27,
               child: AnimatedContainer(
                 duration: Duration(milliseconds: 700),
                 curve: Curves.bounceOut,
-                padding: EdgeInsets.only(
-                    top: isSignupScreen ? s.height * .10 : s.height * .13,
-                    left: s.width * .05),
-                color: Color(0xFF3b5999).withOpacity(.55),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Organik Store'a",
-                      style: TextStyle(
-                        color: Colors.yellow[700],
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                      ),
-                    ),
-                    Text(
-                      "hoş geldiniz...",
-                      style: TextStyle(
-                        color: Colors.yellow[700],
-                        fontWeight: FontWeight.w300,
-                        fontSize: 25,
-                      ),
-                    ),
-                    SizedBox(
-                      height: s.height * .012,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "Devam etmek için",
-                          style: TextStyle(
-                            color: Colors.white60,
-                            letterSpacing: 1,
-                          ),
-                        ),
-                        Text(
-                          isSignupScreen ? " kayıt olunuz." : " giriş yapınız",
-                          style: TextStyle(
-                            color: Colors.white60,
-                            letterSpacing: 1,
-                          ),
-                        ),
-                      ],
-                    )
+                padding: EdgeInsets.all(20),
+                height: isSignupScreen ? s.height * .54 : s.height * .4,
+                width: s.width - 40,
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(.3),
+                        blurRadius: 15,
+                        spreadRadius: 5),
                   ],
                 ),
-              ),
-            ),
-          ),
-          buildButtonContainerPositioned(true),
-          AnimatedPositioned(
-            duration: Duration(milliseconds: 700),
-            curve: Curves.bounceOut,
-            top: isSignupScreen ? s.height * .26 : s.height * .3,
-            child: AnimatedContainer(
-              duration: Duration(milliseconds: 700),
-              curve: Curves.bounceOut,
-              padding: EdgeInsets.all(20),
-              height: isSignupScreen ? s.height * .52 : s.height * .4,
-              width: s.width - 40,
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.black.withOpacity(.3),
-                      blurRadius: 15,
-                      spreadRadius: 5),
-                ],
-              ),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              isSignupScreen = false;
-                            });
-                          },
-                          child: Column(
-                            children: [
-                              Text(
-                                "Giriş Yap",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: isSignupScreen
-                                        ? MainColors.textColor1
-                                        : MainColors.activeColor),
-                              ),
-                              if (!isSignupScreen)
-                                AnimatedContainer(
-                                  duration: Duration(milliseconds: 700),
-                                  curve: Curves.bounceOut,
-                                  margin: EdgeInsets.only(top: 3),
-                                  height: 2,
-                                  width: 55,
-                                  color: Colors.orange,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isSignupScreen = false;
+                              });
+                            },
+                            child: Column(
+                              children: [
+                                Text(
+                                  "Giriş Yap",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: isSignupScreen
+                                          ? MainColors.textColor1
+                                          : MainColors.activeColor),
                                 ),
-                            ],
+                                if (!isSignupScreen)
+                                  AnimatedContainer(
+                                    duration: Duration(milliseconds: 700),
+                                    curve: Curves.bounceOut,
+                                    margin: EdgeInsets.only(top: 3),
+                                    height: 2,
+                                    width: 55,
+                                    color: Colors.orange,
+                                  ),
+                              ],
+                            ),
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              isSignupScreen = true;
-                            });
-                          },
-                          child: Column(
-                            children: [
-                              Text(
-                                "Kayıt Ol",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: isSignupScreen
-                                        ? MainColors.activeColor
-                                        : MainColors.textColor1),
-                              ),
-                              if (isSignupScreen)
-                                AnimatedContainer(
-                                  duration: Duration(milliseconds: 700),
-                                  curve: Curves.bounceOut,
-                                  margin: EdgeInsets.only(top: 3),
-                                  height: 2,
-                                  width: 55,
-                                  color: Colors.orange,
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isSignupScreen = true;
+                              });
+                            },
+                            child: Column(
+                              children: [
+                                Text(
+                                  "Kayıt Ol",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: isSignupScreen
+                                          ? MainColors.activeColor
+                                          : MainColors.textColor1),
                                 ),
-                            ],
+                                if (isSignupScreen)
+                                  AnimatedContainer(
+                                    duration: Duration(milliseconds: 700),
+                                    curve: Curves.bounceOut,
+                                    margin: EdgeInsets.only(top: 3),
+                                    height: 2,
+                                    width: 55,
+                                    color: Colors.orange,
+                                  ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    if (isSignupScreen) buildSignupScreen(),
-                    if (!isSignupScreen) buildSigninScrenn()
-                  ],
-                ),
-              ),
-            ),
-          ),
-          buildButtonContainerPositioned(false),
-          //social buttons
-
-          Positioned(
-              top: s.height - 100,
-              right: 0,
-              left: 0,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: s.height * .035,
+                        ],
+                      ),
+                      if (isSignupScreen) buildSignupScreen(),
+                      if (!isSignupScreen) buildSigninScrenn()
+                    ],
                   ),
-                  Text("ya da"),
-                  Container(
-                    margin: EdgeInsets.only(
-                        right: 20, left: 20, top: s.height * .015),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        buildSocialButton(FlutterIcons.facebook_mco, "Facebook",
-                            MainColors.facebookColor),
-                        buildSocialButton(FlutterIcons.google_mco, "Google",
-                            MainColors.googleColor)
-                      ],
-                    ),
-                  )
-                ],
-              ))
-        ],
+                ),
+              ),
+            ),
+            buildButtonContainerPositioned(false),
+            //social buttons
+            if (!isSignupScreen)
+              Positioned(
+                  top: s.height - 150,
+                  right: 0,
+                  left: 0,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: s.height * .035,
+                      ),
+                      Text("ya da"),
+                      Container(
+                        margin: EdgeInsets.only(
+                            right: 20, left: 20, top: s.height * .015),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            buildSocialButton(FlutterIcons.facebook_mco,
+                                "Facebook", MainColors.facebookColor),
+                            buildSocialButton(FlutterIcons.google_mco, "Google",
+                                MainColors.googleColor)
+                          ],
+                        ),
+                      )
+                    ],
+                  ))
+          ],
+        ),
       ),
     );
   }
@@ -215,7 +218,7 @@ class _LoginSignupState extends State<LoginSignup> {
     Size s = MediaQuery.of(context).size;
 
     return Container(
-      margin: EdgeInsets.only(top: s.width * .015),
+      margin: EdgeInsets.only(top: s.width * .09),
       child: Column(
         children: [
           buildTextField(MaterialCommunityIcons.account_outline,
@@ -342,7 +345,7 @@ class _LoginSignupState extends State<LoginSignup> {
     return AnimatedPositioned(
       duration: Duration(milliseconds: 700),
       curve: Curves.bounceOut,
-      top: isSignupScreen ? s.height * .75 : s.height * .65,
+      top: isSignupScreen ? s.height * .76 : s.height * .62,
       left: 0,
       right: 0,
       child: Center(
