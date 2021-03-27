@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Screens/loginSignup.dart';
+import 'Screens/loginSignupScreen/loginSignup.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
