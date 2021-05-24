@@ -138,6 +138,7 @@ class _LoginSignupState extends State<LoginSignup> {
             LoginSignupButton(
               showShadow: false,
               isSignupScreen: isSignupScreen,
+              onPressed: tryRoute,
             ),
             //social buttons
 

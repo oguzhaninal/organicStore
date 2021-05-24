@@ -11,7 +11,7 @@ class Bottom extends StatelessWidget {
   Widget build(BuildContext context) {
     Size s = MediaQuery.of(context).size;
     return Positioned(
-        top: s.height - 150,
+        top: s.height * .8,
         right: 0,
         left: 0,
         child: Column(

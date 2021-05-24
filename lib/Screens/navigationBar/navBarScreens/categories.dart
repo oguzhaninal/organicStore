@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:organic_store/config/colors.dart';
 
 class CategoriesScreen extends StatefulWidget {
   @override
@@ -40,7 +42,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         NavigationRail(
           destinations: <NavigationRailDestination>[
             NavigationRailDestination(
-              icon: Icon(Icons.favorite_border),
+              icon: Icon(FlutterIcons.favorite_border_mdi),
               selectedIcon: Icon(Icons.favorite),
               label: Text("Kategori 1"),
             ),
@@ -57,7 +59,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           ],
           selectedIndex: selectedIndex,
           onDestinationSelected: onItemTapped,
-          labelType: NavigationRailLabelType.selected,
+          labelType: NavigationRailLabelType.all,
+          unselectedLabelTextStyle: TextStyle(color: MainColors.activeColor),
           unselectedIconTheme: IconThemeData(color: Colors.grey[800]),
           selectedIconTheme: IconThemeData(color: Colors.red),
           selectedLabelTextStyle: TextStyle(color: Colors.red),

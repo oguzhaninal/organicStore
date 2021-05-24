@@ -7,12 +7,14 @@ class MyTextField extends StatelessWidget {
   final bool isPassword;
   final bool isEmail;
   final bool isPhone;
+  final TextEditingController textEditingController;
   MyTextField({
     this.icon,
     this.hintText,
     this.isPassword,
     this.isEmail,
     this.isPhone,
+    this.textEditingController,
   });
 
   @override
@@ -20,6 +22,7 @@ class MyTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: TextField(
+        controller: textEditingController,
         obscureText: isPassword,
         keyboardType: isEmail
             ? TextInputType.emailAddress
